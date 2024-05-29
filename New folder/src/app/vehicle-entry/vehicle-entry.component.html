@@ -1,0 +1,38 @@
+<form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="make">Make:</label>
+      <input id="make" formControlName="make">
+      <div *ngIf="vehicleForm.get('make').invalid && (vehicleForm.get('make').dirty || vehicleForm.get('make').touched)">
+        Make is required.
+      </div>
+    </div>
+    
+    <div>
+      <label for="model">Model:</label>
+      <input id="model" formControlName="model">
+      <div *ngIf="vehicleForm.get('model').invalid && (vehicleForm.get('model').dirty || vehicleForm.get('model').touched)">
+        Model is required.
+      </div>
+    </div>
+  
+    <div>
+      <label for="year">Year:</label>
+      <input id="year" formControlName="year" type="number">
+      <div *ngIf="vehicleForm.get('year').invalid && (vehicleForm.get('year').dirty || vehicleForm.get('year').touched)">
+        <div *ngIf="vehicleForm.get('year').errors.required">Year is required.</div>
+        
+      </div>
+    </div>
+  
+    <div>
+      <label for="vin">VIN:</label>
+      <input id="vin" formControlName="vin">
+      <div *ngIf="vehicleForm.get('vin').invalid && (vehicleForm.get('vin').dirty || vehicleForm.get('vin').touched)">
+        <div *ngIf="vehicleForm.get('vin').errors.required">VIN is required.</div>
+        <div *ngIf="vehicleForm.get('vin').errors.minlength">VIN must be 17 characters long.</div>
+        <div *ngIf="vehicleForm.get('vin').errors.maxlength">VIN must be 17 characters long.</div>
+      </div>
+    </div>
+  
+    <button type="submit" [disabled]="vehicleForm.invalid">Submit</button>
+  </form>

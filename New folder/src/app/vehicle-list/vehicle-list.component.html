@@ -1,0 +1,28 @@
+<div>
+    <input [(ngModel)]="search" placeholder="Search by make or model">
+  
+    <table>
+      <thead>
+        <tr>
+          <th>Make</th>
+          <th>Model</th>
+          <th>Year</th>
+          <th>VIN</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vehicle of filterVehicles()">
+          <td>{{ vehicle.make }}</td>
+          <td>{{ vehicle.model }}</td>
+          <td>{{ vehicle.year }}</td>
+          <td>{{ vehicle.vin }}</td>
+          <td>
+            <button (click)="editVehicle(vehicle)">Edit</button>
+            <button (click)="deleteVehicle(vehicle.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button (click)="navigateToVehicleList()">Add Vehicle</button>
+  </div>
